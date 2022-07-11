@@ -36,6 +36,10 @@ function App() {
 
   let todoArray = [new Todo('Eat breakfast'), new Todo('Workout')]
 
+  function inputSubmitHandler (text: string) {
+    console.log(text)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -53,7 +57,7 @@ function App() {
         </a>
       </header>
       <Todos items={todoArray} />
-      <NewTodo />
+      <NewTodo inputSubmitHandler={inputSubmitHandler} />
     </div>
   );
 }
