@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Todos  from './components/Todos';
@@ -34,10 +34,17 @@ function App() {
     age: 1
   }
 
-  let todoArray = [new Todo('Eat breakfast'), new Todo('Workout')]
+
+  // let todoArray = [new Todo('Eat breakfast'), new Todo('Workout')]
+
+  const [todos, setTodos] = useState<Todo[]>([])
 
   function inputSubmitHandler (text: string) {
-    console.log(text)
+    const newTodo = new Todo(text);
+
+    setTodos((prevTodos) => {
+      return prevTodos.concat(newTodo);
+    })
   }
 
   return (
@@ -56,7 +63,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <Todos items={todoArray} />
+      <Todos items={todos} />
       <NewTodo inputSubmitHandler={inputSubmitHandler} />
     </div>
   );
