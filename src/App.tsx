@@ -35,8 +35,6 @@ function App() {
   }
 
 
-  // let todoArray = [new Todo('Eat breakfast'), new Todo('Workout')]
-
   const [todos, setTodos] = useState<Todo[]>([])
 
   function inputSubmitHandler (text: string) {
@@ -47,24 +45,18 @@ function App() {
     })
   }
 
+  function deleteTodoHandler(id: string) {
+
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.id !== id)
+    })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {number}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Todos items={todos} />
+    
       <NewTodo inputSubmitHandler={inputSubmitHandler} />
+      <Todos items={todos} deleteTodo={deleteTodoHandler}/>
     </div>
   );
 }

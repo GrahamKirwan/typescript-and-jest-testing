@@ -1,6 +1,8 @@
 import React from 'react'
 import { useRef } from 'react';
 
+import styles from './NewTodo.module.css'
+
 const NewTodo: React.FC<{inputSubmitHandler: (text: string) => void}> = (props) => {
 
     const inputValueRef = useRef<HTMLInputElement>(null);
@@ -18,7 +20,7 @@ const NewTodo: React.FC<{inputSubmitHandler: (text: string) => void}> = (props) 
     }
 
   return (
-    <form onSubmit={formSubmitHandler}>
+    <form onSubmit={formSubmitHandler} className={styles.form}>
         <label htmlFor='text'>New Todo</label>
         <input type='text' id='text' ref={inputValueRef}/>
         <button>Add Todo</button>

@@ -1,9 +1,16 @@
 import React from 'react'
 import Todo from './models/todo'
 
-const ListItem: React.FC<{item: Todo}> = (props) => {
+import styles from './ListItem.module.css'
+
+const ListItem: React.FC<{item: Todo, inputSubmitHandler: (id: string) => void}> = (props) => {
+
+    function todoClickHandler() {
+        props.inputSubmitHandler(props.item.id)
+    }
+
   return (
-    <li>{props.item.text}</li>
+    <li className={styles.item} onClick={todoClickHandler}>{props.item.text}</li>
   )
 }
 
